@@ -5,8 +5,10 @@ const galleryListContainer = document.querySelector('.gallery')
 
 function creategalleryItemsMarkUp (items) {
    
-   const itemsSet = items.reduce((acc, item) => { return `<div class="gallery__item">
-    <a class="gallery__link" href="large-image.jpg">
+   const itemsSet = items.reduce((acc, item) => { 
+    
+    const template = `<div class="gallery__item">
+    <a class="gallery__link" href="${item.original}">
       <img
         class="gallery__image"
         src="${item.preview}"
@@ -14,12 +16,19 @@ function creategalleryItemsMarkUp (items) {
         alt="${item.description}"
       />
     </a>
-  </div>`}, '')
-
-  return itemsSet
-     console.log(itemsSet)
+  </div>`
+    return acc += template}, '')
+    
+    galleryListContainer.innerHTML = itemsSet
+   
 }
 
-galleryListContainer.innerHTML = creategalleryItemsMarkUp(galleryItems)
+creategalleryItemsMarkUp(galleryItems)
+
 console.log(galleryListContainer)
 
+galleryListContainer.addEventListener('click', onFullScreenSizeImageClick)
+
+function onFullScreenSizeImageClick () {
+
+}

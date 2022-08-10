@@ -23,7 +23,7 @@ export const galleryItems = [
   {
     preview:
       'https://cdn.pixabay.com/photo/2016/11/18/16/19/flowers-1835619__340.jpg',
-    original: 
+    original:
       'https://cdn.pixabay.com/photo/2016/11/18/16/19/flowers-1835619_1280.jpg',
     description: 'Flower Blooms',
   },
