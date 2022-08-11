@@ -1,6 +1,5 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
-
 const galleryListContainer = document.querySelector('.gallery')
 
 function creategalleryItemsMarkUp (items) {
@@ -25,10 +24,13 @@ function creategalleryItemsMarkUp (items) {
 
 creategalleryItemsMarkUp(galleryItems)
 
-console.log(galleryListContainer)
+let galleryImage = document.querySelectorAll('.gallery__image')
 
 galleryListContainer.addEventListener('click', onFullScreenSizeImageClick)
 
-function onFullScreenSizeImageClick () {
-
+function onFullScreenSizeImageClick (evt) {
+  evt.preventDefault()
+  const instance = basicLightbox.create(`<img width="1400" height="900" src = '${evt.target.dataset.source}'>`)
+  instance.show()
 }
+
