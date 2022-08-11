@@ -24,13 +24,13 @@ function creategalleryItemsMarkUp (items) {
 
 creategalleryItemsMarkUp(galleryItems)
 
-let galleryImage = document.querySelectorAll('.gallery__image')
-
 galleryListContainer.addEventListener('click', onFullScreenSizeImageClick)
 
 function onFullScreenSizeImageClick (evt) {
   evt.preventDefault()
-  const instance = basicLightbox.create(`<img width="1400" height="900" src = '${evt.target.dataset.source}'>`)
+  const instance = basicLightbox.create(
+    `<img width="1400" height="900" src = '${evt.target.dataset.source}'>`
+    )
   instance.show()
 }
 
