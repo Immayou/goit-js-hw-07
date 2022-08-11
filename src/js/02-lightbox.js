@@ -5,21 +5,21 @@ const galleryListContainer = document.querySelector('.gallery')
 
 function creategalleryItemsMarkUp (items) {
    
-   const itemsSet = items.reduce((acc, item) => { 
+   const galleryItems = items.reduce((acc, {original, preview, description}) => { 
     
     const template = `<div class="gallery__item">
-    <a class="gallery__link" href="${item.original}">
+    <a class="gallery__link" href="${original}">
       <img
         class="gallery__image"
-        src="${item.preview}"
-        data-source="${item.original}"
-        alt="${item.description}"
+        src="${preview}"
+        data-source="${original}"
+        alt="${description}"
       />
     </a>
   </div>`
     return acc += template}, '')
     
-    galleryListContainer.innerHTML = itemsSet
+    galleryListContainer.innerHTML = galleryItems
    
 }
 
