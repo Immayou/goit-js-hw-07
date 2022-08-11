@@ -32,10 +32,12 @@ function onFullScreenSizeImageClick (evt) {
     `<img width="1400" height="900" src = '${evt.target.dataset.source}'>`
     )
   instance.show()
+  
+  window.addEventListener('keydown', onModalImageCloseKeydown)
+  
+  function onModalImageCloseKeydown (evt) {
+  if (evt.key === 'Escape') {
+  instance.close()}
+  }
 }
 
-window.addEventListener('keydown', onModalImageCloseKeydown)
-
-function onModalImageCloseKeydown (evt) {
- if (evt.key === 'Escape') 
-}
