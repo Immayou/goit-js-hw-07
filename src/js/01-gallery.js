@@ -34,3 +34,8 @@ function onFullScreenSizeImageClick (evt) {
   instance.show()
 }
 
+window.addEventListener('keydown', onModalImageCloseKeydown)
+
+function onModalImageCloseKeydown (evt) {
+ if (evt.key === 'Escape') 
+}
