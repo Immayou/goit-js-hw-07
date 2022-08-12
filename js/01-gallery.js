@@ -1,4 +1,6 @@
 import { galleryItems } from './gallery-items.js';
+
+console.log(galleryItems)
 // Change code below this line
 const galleryListContainer = document.querySelector('.gallery')
 
@@ -33,20 +35,21 @@ function onFullScreenSizeImageClick (evt) {
   if (evt.target.nodeName !== 'IMG') {
     return
   }
+  
+  const selectedImageSource = evt.target.dataset.source;
 
   const instance = basicLightbox.create(
-    `<img width="1400" height="900" src = '${evt.target.dataset.source}'>`
+    `<img width="1400" height="900" src = '${selectedImageSource}'>`,
+
+    {onShow: (instance) => {
+        window.addEventListener('keydown', function(evt) {
+          if (evt.key === 'Escape') {
+           instance.close()}
+          })
+        }
+      }
     )
 
   instance.show()
-  
-  window.addEventListener('keydown', onModalImageCloseKeydown)
-  
-  function onModalImageCloseKeydown (evt) {
-
-  if (evt.key === 'Escape') {
-  instance.close()}
-  }
-
 }
 
