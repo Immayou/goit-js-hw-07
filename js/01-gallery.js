@@ -28,6 +28,14 @@ creategalleryItemsMarkUp(galleryItems)
 
 galleryListContainer.addEventListener('click', onFullScreenSizeImageClick)
 
+const instance = basicLightbox.create(
+  `<img width="1400" height="900" src = ''>`, {
+    onShow: instance => {window.addEventListener('keydown', onEscClick)
+  },
+    onClose: instance => {window.addEventListener('keydown', onEscClick)
+  }
+})
+
 function onFullScreenSizeImageClick (evt) {
   
   evt.preventDefault()
@@ -35,21 +43,14 @@ function onFullScreenSizeImageClick (evt) {
   if (evt.target.nodeName !== 'IMG') {
     return
   }
-  
-  const selectedImageSource = evt.target.dataset.source;
 
-  const instance = basicLightbox.create(
-    `<img width="1400" height="900" src = '${selectedImageSource}'>`,
+  instance.element().querySelector('img').src = evt.target.dataset.source;
 
-    {onShow: (instance) => {
-        window.addEventListener('keydown', function(evt) {
-          if (evt.key === 'Escape') {
-           instance.close()}
-          })
-        }
-      }
-    )
-
-  instance.show()
+  instance.show();
 }
 
+function onEscClick (evt) {
+    if (evt.key === 'Escape') {
+    instance.close()
+  return}
+}
