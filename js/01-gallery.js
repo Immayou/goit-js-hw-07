@@ -52,5 +52,5 @@ function onFullScreenSizeImageClick (evt) {
 function onEscClick (evt) {
     if (evt.key === 'Escape') {
     instance.close()
-  return}
+    return}
 }
